@@ -134,6 +134,21 @@ const HomePage = () => {
 				console.log("Api not working");
 			}
 		}
+		return () => {
+			yourTab.removeEventListener("click", () => {
+				switchTab(yourTab);
+			});
+			searchTab.removeEventListener("click", () => {
+				switchTab(searchTab);
+			});
+			grantAccessButton.removeEventListener("click", getLocation);
+			formContainer.removeEventListener("submit", (e) => {
+				e.preventDefault();
+				if (searchInput.value == "") return;
+
+				fetchSearchWeatherInfo(searchInput.value);
+			});
+		};
 	}, []);
 	return (
 		<>
@@ -144,10 +159,10 @@ const HomePage = () => {
 			<div className="wrapper">
 				<h1>Weather app</h1>
 				<div className="tab-container">
-					<p className="tab" data-yourweather="">
+					<p className="tab" data-yourweather="data-yourweather">
 						Your weather
 					</p>
-					<p className="tab" data-searchweather="">
+					<p className="tab" data-searchweather="data-searchweather">
 						Search Weather
 					</p>
 				</div>
@@ -162,13 +177,16 @@ const HomePage = () => {
 						/>
 						<p>Grant Location Access</p>
 						<p>Allow Access To Get Weather Information</p>
-						<button className="btn" data-grantaccess="">
+						<button className="btn" data-grantaccess="data-grantaccess">
 							GRANT ACCESS
 						</button>
 					</div>
 					{/* search form */}
-					<form className="form-container" data-searchform="">
-						<input placeholder="Search for city ..." data-searchinput="" />
+					<form className="form-container" data-searchform="data-searchform">
+						<input
+							placeholder="Search for city ..."
+							data-searchinput="data-searchinput"
+						/>
 						<button className="btn">
 							<img
 								src="./assets/search.png"
@@ -188,11 +206,11 @@ const HomePage = () => {
 					<div className="sub-container weather-infoContainer">
 						<div className="name">
 							<p data-cityname="" />
-							<img data-countryicon="" />
+							<img data-countryicon="data-countryicon" />
 						</div>
-						<p data-weatherdescription="" />
-						<img data-weathericon="" />
-						<p data-temperature="" />
+						<p data-weatherdescription="data-weatherdescription" />
+						<img data-weathericon="data-weathericon" />
+						<p data-temperature="data-temperature" />
 						{/* card-container */}
 						<div className="card-container">
 							{/* card-1 */}

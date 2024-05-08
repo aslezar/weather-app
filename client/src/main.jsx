@@ -11,7 +11,7 @@ import './global.css';
 import 'react-toastify/dist/ReactToastify.css';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-	<React.StrictMode>
+	// <React.StrictMode>
 		<BrowserRouter>
 			<GoogleOAuthProvider clientId={client_id}>
 				<ToastContainer
@@ -22,5 +22,5 @@ ReactDOM.createRoot(document.getElementById('root')).render(
 				<App />
 			</GoogleOAuthProvider>
 		</BrowserRouter>
-	</React.StrictMode>
+	// </React.StrictMode>
 );
