@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+		<link rel="stylesheet" href="weather.css" />
+	</head>
+
+	<body>
+		<div class="wrapper">
+			<h1>Weather app</h1>
+			<div class="tab-container">
+				<p class="tab" data-yourWeather>Your weather</p>
+				<p class="tab" data-searchWeather>Search Weather</p>
+			</div>
+			<div class="weather-container">
+				<!-- grant location access -->
+				<div class="sub-container grant-location-container">
+					<img
+						src="./assets/location.png"
+						width="80"
+						height="80"
+						loading="lazy"
+					/>
+					<p>Grant Location Access</p>
+					<p>Allow Access To Get Weather Information</p>
+					<button class="btn" data-grantAccess>GRANT ACCESS</button>
+				</div>
+				<!-- search form -->
+				<form class="form-container" data-searchForm>
+					<input placeholder="Search for city ..." data-SearchInput />
+					<button class="btn">
+						<img
+							src="./assets/search.png"
+							alt=""
+							width="20"
+							height="20"
+							loading="lazy"
+						/>
+					</button>
+				</form>
+				<!-- loading screen -->
+				<div class="sub-container loading-container">
+					<img src="./assets/loading.gif" alt="" width="150" height="150" />
+					<p>loading</p>
+				</div>
+				<!-- show weawther information -->
+				<div class="sub-container weather-infoContainer">
+					<div class="name">
+						<p data-cityName></p>
+						<img data-countryIcon />
+					</div>
+					<p data-weatherDescription></p>
+					<img data-weatherIcon />
+
+					<p data-temperature></p>
+					<!-- card-container -->
+					<div class="card-container">
+						<!-- card-1 -->
+						<div class="wind-speed card">
+							<img src="./assets/wind.png" alt="" />
+							<p>WINDSPEED</p>
+							<p data-windSpeed></p>
+						</div>
+						<!-- card-2 -->
+						<div class="humidity card">
+							<img src="./assets/humidity.png" alt="" />
+							<p>HUMIDITY</p>
+							<p data-humidity></p>
+						</div>
+						<!-- card-3 -->
+						<div class="clouds card">
+							<img src="./assets/cloud.png" alt="" />
+							<p>CLOUDS</p>
+							<p data-cloud></p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<script src="weather.js"></script>
+	</body>
+</html>
