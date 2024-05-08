@@ -1,14 +1,14 @@
-const express = require('express');
-const connectDB = require('./db/connect');
-const helmet = require('helmet');
-const cors = require('cors');
-const xss = require('xss-clean');
-const rateLimiter = require('express-rate-limit');
-require('dotenv').config();
-const path = require('path');
+const express = require("express");
+const connectDB = require("./db/connect");
+const helmet = require("helmet");
+const cors = require("cors");
+const xss = require("xss-clean");
+const rateLimiter = require("express-rate-limit");
+require("dotenv").config();
+const path = require("path");
 
 // Routes
-const userRoutes = require('./routes/userRoutes');
+const userRoutes = require("./routes/userRoutes");
 
 // Express App
 const app = express();
@@ -25,17 +25,17 @@ app.use(helmet()); //set security HTTP headers
 app.use(cors()); //enable CORS
 app.use(xss()); //prevent XSS attacks
 
-app.use('/', express.static(path.join(__dirname, '../client/dist')));
+app.use("/", express.static(path.join(__dirname, "../client/dist")));
 app.use(
-	'/assests',
-	express.static(path.join(__dirname, '../client/dist/assests'))
+	"/assets",
+	express.static(path.join(__dirname, "../client/dist/assets"))
 );
 
-app.use('/users', userRoutes);
-app.get('/*', (req, res) => {
-	res.sendFile(path.join(__dirname, '../client/dist/index.html'), (err) => {
+app.use("/users", userRoutes);
+app.get("/*", (req, res) => {
+	res.sendFile(path.join(__dirname, "../client/dist/index.html"), (err) => {
 		if (err) {
-			console.error('Error sending file:', err);
+			console.error("Error sending file:", err);
 		}
 	});
 });
@@ -46,7 +46,7 @@ const PORT = process.env.PORT || 5000;
 async function start() {
 	try {
 		await connectDB(process.env.MONGO_URL);
-		console.log('Connected to the database successfully');
+		console.log("Connected to the database successfully");
 		app.listen(PORT, () => {
 			console.log(`Server is listening on http://localhost:${PORT}`);
 		});
