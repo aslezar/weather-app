@@ -21,9 +21,6 @@ app.use(
 	})
 );
 app.use(express.json());
-app.use(helmet()); //set security HTTP headers
-app.use(cors()); //enable CORS
-app.use(xss()); //prevent XSS attacks
 
 app.use("/", express.static(path.join(__dirname, "../client/dist")));
 app.use(
